@@ -1,5 +1,6 @@
 export enum ErrorTypes {
   Conflict = 'conflict',
+  Unauthorized = 'unauthorized',
 }
 
 type ErrorResponseObject = {
@@ -13,5 +14,9 @@ export const errorCatalog: ErrorCatalog = {
   conflict: {
     message: 'Entidade já cadastrada',
     httpStatus: 409,
+  },
+  unauthorized: {
+    message: 'Email ou senha incorretos',
+    httpStatus: 401,
   },
 };
