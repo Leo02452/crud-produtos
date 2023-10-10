@@ -3,6 +3,7 @@ import 'express-async-errors';
 import {
   userRoutes,
 } from './routes';
+import errorHandler from './middlewares/errorHandler';
 
 class App {
   public app: express.Express;
@@ -18,6 +19,7 @@ class App {
   private config():void {
     this.app.use(express.json());
     this.app.use('/users', userRoutes);
+    this.app.use(errorHandler);
   }
 
   public start(PORT: string | number | undefined):void {
