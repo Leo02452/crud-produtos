@@ -3,9 +3,12 @@ import CreateProductControllerFactory
   from '../factories/implementations/CreateProductControllerFactory';
 import ListProductsControllerFactory
   from '../factories/implementations/ListProductsControllerFactory';
+import UpdateProductControllerFactory
+  from '../factories/implementations/UpdateProductControllerFactory';
 
 const createProductController = CreateProductControllerFactory.make();
 const listProductsController = ListProductsControllerFactory.make();
+const updateProductController = UpdateProductControllerFactory.make();
 
 const route = Router();
 
@@ -23,6 +26,14 @@ route.post(
   '/',
   async (req, res) => {
     const response = await createProductController.handle(req);
+    return res.status(response.status).json(response.body);
+  },
+);
+
+route.put(
+  '/:id',
+  async (req, res) => {
+    const response = await updateProductController.handle(req);
     return res.status(response.status).json(response.body);
   },
 );
