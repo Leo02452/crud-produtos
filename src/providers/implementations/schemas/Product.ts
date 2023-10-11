@@ -7,8 +7,10 @@ const productBaseSchema = z.object({
 });
 
 type ICreateProductDTO = z.infer<typeof productBaseSchema>;
+type IUpdateProductDTO = z.infer<typeof productBaseSchema>;
 
 export {
   productBaseSchema,
   ICreateProductDTO,
+  IUpdateProductDTO,
 };
