@@ -3,6 +3,7 @@ import 'express-async-errors';
 import {
   userRoutes,
   authRoutes,
+  productRoutes,
 } from './routes';
 import errorHandler from './middlewares/errorHandler';
 
@@ -21,6 +22,7 @@ class App {
     this.app.use(express.json());
     this.app.use('/users', userRoutes);
     this.app.use('/auth', authRoutes);
+    this.app.use('/products', productRoutes);
     this.app.use(errorHandler);
   }
 

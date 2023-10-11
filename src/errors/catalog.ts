@@ -1,6 +1,7 @@
 export enum ErrorTypes {
   Conflict = 'conflict',
   Unauthorized = 'unauthorized',
+  NonAuthenticated = 'non-authenticated',
 }
 
 type ErrorResponseObject = {
@@ -17,6 +18,10 @@ export const errorCatalog: ErrorCatalog = {
   },
   unauthorized: {
     message: 'Email ou senha incorretos',
+    httpStatus: 401,
+  },
+  'non-authenticated': {
+    message: 'Informe um token válido',
     httpStatus: 401,
   },
 };
