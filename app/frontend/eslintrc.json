@@ -1,0 +1,90 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "airbnb"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.eslint.json"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "react-hooks",
+    "import-helpers"
+  ],
+  "rules": {
+    "react/jsx-curly-newline": "off",
+    "import/extensions": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "operator-linebreak": "off",
+    "prettier/prettier": "error",
+    "react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+    "object-curly-newline": "off",
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-undef": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-shadow": "off",
+    "comma-dangle": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "import-helpers/order-imports": ["warn", {
+      "newlinesBetween": "always", 
+      "alphabetize": { "order": "asc", "ignoreCase": true },
+      "groups": [
+        "/^react/",
+        "/^next/",
+        "module",
+        "absolute",
+        "parent",
+        "/^@app/application/dtos/",
+        "/^@app/application/entities/",
+        "/^@app/application/exceptions/",
+        "/^@app/application/mappers/",
+        "/^@app/application/providers/",
+        "/^@app/application/services/",
+        "/^@app/constants/",
+        "/^@app/contexts/",
+        "/^@app/hooks/",
+        "/^@app/providers/",
+        "/^@app/utils/",
+        [ "/^chakra/", "/^@chakra-ui/"],
+        "/^@app/components/",
+        "/^@app/pages/",
+        "sibling",
+        "index"
+      ]
+    }],
+    "no-cond-assign":"off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
