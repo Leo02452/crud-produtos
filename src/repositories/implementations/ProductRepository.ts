@@ -8,12 +8,14 @@ import {
   ICreateProductRepository,
   IFindAllProductsRepository,
   IUpdateProductRepository,
+  IDeleteProductRepository,
 } from '../IProductRepository';
 
 export default class ProductRepository implements
 ICreateProductRepository,
 IFindAllProductsRepository,
-IUpdateProductRepository {
+IUpdateProductRepository,
+IDeleteProductRepository {
   constructor(
     private _model: typeof prismaModel.product,
   ) { }
@@ -32,6 +34,12 @@ IUpdateProductRepository {
     await this._model.update({
       where: { id },
       data,
+    });
+  }
+
+  async delete(id: number): Promise<void> {
+    await this._model.delete({
+      where: { id },
     });
   }
 }

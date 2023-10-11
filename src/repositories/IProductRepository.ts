@@ -15,3 +15,7 @@ export interface IFindAllProductsRepository {
 export interface IUpdateProductRepository {
   update(id: number, data: IUpdateProductDTO): Promise<void>
 }
+
+export interface IDeleteProductRepository {
+  delete(id: number): Promise<void>
+}
