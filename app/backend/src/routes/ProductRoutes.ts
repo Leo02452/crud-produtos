@@ -1,12 +1,8 @@
 import { Router } from 'express';
-import CreateProductControllerFactory
-  from '../factories/implementations/CreateProductControllerFactory';
-import ListProductsControllerFactory
-  from '../factories/implementations/ListProductsControllerFactory';
-import UpdateProductControllerFactory
-  from '../factories/implementations/UpdateProductControllerFactory';
-import DeleteProductControllerFactory
-  from '../factories/implementations/DeleteProductControllerFactory';
+import CreateProductControllerFactory from '../factories/CreateProductControllerFactory';
+import DeleteProductControllerFactory from '../factories/implementations/DeleteProductControllerFactory';
+import ListProductsControllerFactory from '../factories/implementations/ListProductsControllerFactory';
+import UpdateProductControllerFactory from '../factories/implementations/UpdateProductControllerFactory';
 import authValidation from '../middlewares/authValidation';
 
 const createProductController = CreateProductControllerFactory.make();
