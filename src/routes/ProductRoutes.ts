@@ -3,6 +3,7 @@ import CreateProductControllerFactory from '../factories/CreateProductController
 import DeleteProductControllerFactory from '../factories/DeleteProductControllerFactory';
 import ListProductsControllerFactory from '../factories/ListProductsControllerFactory';
 import UpdateProductControllerFactory from '../factories/UpdateProductControllerFactory';
+import FindProductByTermControllerFactory from '../factories/FindProductByTermControllerFactory';
 import CreateProductControllerFactory
   from '../factories/implementations/CreateProductControllerFactory';
 import ListProductsControllerFactory
@@ -17,6 +18,7 @@ const createProductController = CreateProductControllerFactory.make();
 const listProductsController = ListProductsControllerFactory.make();
 const updateProductController = UpdateProductControllerFactory.make();
 const deleteProductController = DeleteProductControllerFactory.make();
+const findProductByTermController = FindProductByTermControllerFactory.make();
 
 const route = Router();
 
@@ -24,6 +26,14 @@ route.get(
   '/',
   async (req, res) => {
     const response = await listProductsController.handle();
+    return res.status(response.status).json(response.body);
+  },
+);
+
+route.get(
+  '/search/',
+  async (req, res) => {
+    const response = await findProductByTermController.handle(req);
     return res.status(response.status).json(response.body);
   },
 );
