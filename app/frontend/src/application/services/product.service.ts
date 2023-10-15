@@ -17,3 +17,8 @@ export const editProduct = async (dto: IProduct) => {
   const { data } = await ApiClient.put(`${endpoint}/${dto.id}`, dto);
   return data;
 };
+
+export const deleteProduct = async (id: string) => {
+  const { data } = await ApiClient.delete(`${endpoint}/${id}`);
+  return data;
+};

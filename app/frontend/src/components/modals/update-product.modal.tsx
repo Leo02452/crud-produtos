@@ -18,6 +18,8 @@ import {
   IProduct,
   IProductDTO,
 } from '../../application/dto-and-entities/product';
+import useDeleteProduct from '../../hooks/mutations/delete-product.mutation-hook';
+
 import useUpdateProduct from '../../hooks/mutations/update-product.mutation-hook';
 
 import UpdateProductForm from '../forms/update-product/update-product.form.component';
@@ -34,6 +36,7 @@ export default function UpdateProductModal({
   onClose,
   product,
 }: UpdateProductModalProps) {
+  const deleteProduct = useDeleteProduct({ onClose });
   const updateProduct = useUpdateProduct({ onClose });
 
   const onUpdate = useCallback(
@@ -46,6 +49,9 @@ export default function UpdateProductModal({
     [updateProduct, product.id],
   );
 
+  const onDelete = useCallback(() => {
+    deleteProduct.mutateAsync(product.id);
+  }, [deleteProduct, product.id]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -60,6 +66,14 @@ export default function UpdateProductModal({
         </ModalBody>
         <ModalFooter>
           <HStack>
+            <Button
+              colorScheme="red"
+              onClick={onDelete}
+              isLoading={deleteProduct.isLoading}
+              rightIcon={<Icon as={UilTrash} />}
+            >
+              Deletar
+            </Button>
             <Button
               form={UpdateProductFormID}
               type="submit"
