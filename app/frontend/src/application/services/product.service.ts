@@ -1,3 +1,4 @@
+import { SearchQueryFormFields } from '@app/components/forms/search-query/search-query.form.types';
 import ApiClient from '../../providers/api-client.provider';
 import { IProduct, IProductDTO } from '../dto-and-entities/product';
 
@@ -20,5 +21,10 @@ export const editProduct = async (dto: IProduct) => {
 
 export const deleteProduct = async (id: string) => {
   const { data } = await ApiClient.delete(`${endpoint}/${id}`);
+  return data;
+};
+
+export const getFilteredProducts = async (dto: SearchQueryFormFields) => {
+  const { data } = await ApiClient.get(`${endpoint}/search?term=${dto.search}`);
   return data;
 };
