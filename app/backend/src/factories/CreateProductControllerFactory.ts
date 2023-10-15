@@ -1,8 +1,8 @@
-import CreateProductController from '../../controllers/CreateProductController';
-import prismaModel from '../../database/prisma';
-import { productBaseSchema } from '../../providers/implementations/schemas/Product';
-import ProductRepository from '../../repositories/implementations/ProductRepository';
-import CreateProductService from '../../services/CreateProductService';
+import CreateProductController from '../controllers/CreateProductController';
+import prismaModel from '../database/prisma';
+import { productBaseSchema } from '../providers/implementations/schemas/Product';
+import ProductRepository from '../repositories/implementations/ProductRepository';
+import CreateProductService from '../services/CreateProductService';
 
 export default class CreateProductControllerFactory {
   static make() {

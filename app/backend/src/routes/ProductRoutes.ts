@@ -4,14 +4,6 @@ import DeleteProductControllerFactory from '../factories/DeleteProductController
 import ListProductsControllerFactory from '../factories/ListProductsControllerFactory';
 import UpdateProductControllerFactory from '../factories/UpdateProductControllerFactory';
 import FindProductByTermControllerFactory from '../factories/FindProductByTermControllerFactory';
-import CreateProductControllerFactory
-  from '../factories/implementations/CreateProductControllerFactory';
-import ListProductsControllerFactory
-  from '../factories/implementations/ListProductsControllerFactory';
-import UpdateProductControllerFactory
-  from '../factories/implementations/UpdateProductControllerFactory';
-import DeleteProductControllerFactory
-  from '../factories/implementations/DeleteProductControllerFactory';
 import authValidation from '../middlewares/authValidation';
 
 const createProductController = CreateProductControllerFactory.make();
