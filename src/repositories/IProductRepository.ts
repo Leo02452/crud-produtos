@@ -19,3 +19,7 @@ export interface IUpdateProductRepository {
 export interface IDeleteProductRepository {
   delete(id: number): Promise<void>
 }
+
+export interface IFindyProductByTermRepository {
+  findByTerm(term: string): Promise<IProduct[] | []>
+}
