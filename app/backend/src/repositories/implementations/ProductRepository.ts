@@ -6,16 +6,18 @@ import {
 } from '../../providers/implementations/schemas/Product';
 import {
   ICreateProductRepository,
-  IFindAllProductsRepository,
-  IUpdateProductRepository,
   IDeleteProductRepository,
+  IFindAllProductsRepository,
+  IFindyProductByTermRepository,
+  IUpdateProductRepository,
 } from '../IProductRepository';
 
 export default class ProductRepository implements
 ICreateProductRepository,
 IFindAllProductsRepository,
 IUpdateProductRepository,
-IDeleteProductRepository {
+IDeleteProductRepository,
+IFindyProductByTermRepository {
   constructor(
     private _model: typeof prismaModel.product,
   ) { }
@@ -41,5 +43,23 @@ IDeleteProductRepository {
     await this._model.delete({
       where: { id },
     });
+  }
+
+  async findByTerm(term: string): Promise<IProduct[] | []> {
+    const filteredProductsList = await this._model.findMany({
+      where: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        OR: [
+          { name: {
+            contains: term,
+          } },
+          { description: {
+            contains: term,
+          } },
+        ],
+      },
+    });
+
+    return filteredProductsList;
   }
 }
