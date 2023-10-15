@@ -1,7 +1,7 @@
-import ListProductsController from '../../controllers/ListProductsController';
-import prismaModel from '../../database/prisma';
-import ProductRepository from '../../repositories/implementations/ProductRepository';
-import ListProductsService from '../../services/ListProductsService';
+import ListProductsController from '../controllers/ListProductsController';
+import prismaModel from '../database/prisma';
+import ProductRepository from '../repositories/implementations/ProductRepository';
+import ListProductsService from '../services/ListProductsService';
 
 export default class ListProductsControllerFactory {
   static make() {

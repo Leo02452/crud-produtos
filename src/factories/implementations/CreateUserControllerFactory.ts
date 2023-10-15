@@ -1,12 +1,12 @@
-import CreateUserController from '../../controllers/CreateUserController';
-import prismaModel from '../../database/prisma';
-import PasswordProviderAdapter from '../../providers/implementations/PasswordProviderAdapter';
-import TokenProvider from '../../providers/implementations/TokenProviderAdapter';
+import CreateUserController from '../controllers/CreateUserController';
+import prismaModel from '../database/prisma';
+import PasswordProviderAdapter from '../providers/implementations/PasswordProviderAdapter';
+import TokenProvider from '../providers/implementations/TokenProviderAdapter';
 import {
   createUserSchema,
-} from '../../providers/implementations/schemas/User';
-import UserRepository from '../../repositories/implementations/UserRepository';
-import CreateUserService from '../../services/CreateUserService';
+} from '../providers/implementations/schemas/User';
+import UserRepository from '../repositories/implementations/UserRepository';
+import CreateUserService from '../services/CreateUserService';
 
 export default class CreateUserControllerFactory {
   public static make() {

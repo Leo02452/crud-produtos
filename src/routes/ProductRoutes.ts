@@ -1,4 +1,8 @@
 import { Router } from 'express';
+import CreateProductControllerFactory from '../factories/CreateProductControllerFactory';
+import DeleteProductControllerFactory from '../factories/DeleteProductControllerFactory';
+import ListProductsControllerFactory from '../factories/ListProductsControllerFactory';
+import UpdateProductControllerFactory from '../factories/UpdateProductControllerFactory';
 import CreateProductControllerFactory
   from '../factories/implementations/CreateProductControllerFactory';
 import ListProductsControllerFactory
