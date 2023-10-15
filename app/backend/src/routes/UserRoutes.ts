@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import CreateUserControllerFactory
-  from '../factories/implementations/CreateUserControllerFactory';
+  from '../factories/CreateUserControllerFactory';
 
 const createUserController = CreateUserControllerFactory.make();
 

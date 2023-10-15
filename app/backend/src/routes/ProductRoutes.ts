@@ -1,14 +1,16 @@
 import { Router } from 'express';
 import CreateProductControllerFactory from '../factories/CreateProductControllerFactory';
-import DeleteProductControllerFactory from '../factories/implementations/DeleteProductControllerFactory';
-import ListProductsControllerFactory from '../factories/implementations/ListProductsControllerFactory';
-import UpdateProductControllerFactory from '../factories/implementations/UpdateProductControllerFactory';
+import DeleteProductControllerFactory from '../factories/DeleteProductControllerFactory';
+import ListProductsControllerFactory from '../factories/ListProductsControllerFactory';
+import UpdateProductControllerFactory from '../factories/UpdateProductControllerFactory';
+import FindProductByTermControllerFactory from '../factories/FindProductByTermControllerFactory';
 import authValidation from '../middlewares/authValidation';
 
 const createProductController = CreateProductControllerFactory.make();
 const listProductsController = ListProductsControllerFactory.make();
 const updateProductController = UpdateProductControllerFactory.make();
 const deleteProductController = DeleteProductControllerFactory.make();
+const findProductByTermController = FindProductByTermControllerFactory.make();
 
 const route = Router();
 
@@ -16,6 +18,14 @@ route.get(
   '/',
   async (req, res) => {
     const response = await listProductsController.handle();
+    return res.status(response.status).json(response.body);
+  },
+);
+
+route.get(
+  '/search/',
+  async (req, res) => {
+    const response = await findProductByTermController.handle(req);
     return res.status(response.status).json(response.body);
   },
 );
