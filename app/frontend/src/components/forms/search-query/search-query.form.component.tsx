@@ -20,8 +20,12 @@ export default function SearchQueryForm({ onUpdate }: SearchQueryFormProps) {
 
   return (
     <FormProvider {...formProps}>
-      <Stack as="form" flexGrow={1}>
-        <TextInput name="search" placeholder="Digite para pesquisar..." />
+      <Stack as="form" width="100%">
+        <TextInput
+          name="search"
+          placeholder="Digite para pesquisar..."
+          width="xl"
+        />
       </Stack>
     </FormProvider>
   );
