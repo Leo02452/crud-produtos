@@ -1,7 +1,5 @@
 import ApiClient from '../../providers/api-client.provider';
-import {
-  IProductDTO
-} from '../dto-and-entities/product';
+import { IProduct, IProductDTO } from '../dto-and-entities/product';
 
 const endpoint = 'products';
 
@@ -15,3 +13,7 @@ export const createProduct = async (dto: IProductDTO) => {
   return data;
 };
 
+export const editProduct = async (dto: IProduct) => {
+  const { data } = await ApiClient.put(`${endpoint}/${dto.id}`, dto);
+  return data;
+};
