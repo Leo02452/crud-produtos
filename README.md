@@ -60,6 +60,9 @@ O usuário poderá ver os produtos cadastrados e ao criar sua conta e fazer logi
 
 
 ## :computer: Como usar a aplicação
+
+No Postman você pode encontrar a documentação da API: https://documenter.getpostman.com/view/28244152/2s9YR6buRN
+
 <details>
   <summary><strong>Pré-requisitos</strong></summary>
 
@@ -122,13 +125,6 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 ```
  npm start
 ```
-</details>
-
-<details>
-  <summary><strong>Outros scripts da API</strong></summary>
-
-* `npm run lint` para rodar o ESLint;
-* `npm run db:reset` para resetar o banco de desenvolvimento;
 </details>
 
 
