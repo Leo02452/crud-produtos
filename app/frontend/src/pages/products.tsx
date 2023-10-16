@@ -64,7 +64,7 @@ export default function Products() {
         <Spacer />
         {isAuthenticated && (
           <Button onClick={createProductModalControl.onOpen} color="secundary">
-            Criar novo produto
+            Criar produto
           </Button>
         )}
       </HStack>
