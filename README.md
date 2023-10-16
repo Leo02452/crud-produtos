@@ -127,6 +127,28 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 ```
 </details>
 
+<details>
+  <summary><strong>Rodando a aplicação via Docker</strong></summary>
+Lembre-se de que pra esse caso é necessário ter o [Docker](https://www.docker.com/) instalado em sua máquina
+
+1 - Clone esse repositório para sua máquina com o seguinte comando no terminal:
+
+```
+ git clone git@github.com:Leo02452/crud-produtos.git
+```
+
+2 - Entre na pasta criada e em seguida entre na pasta app:
+
+```
+ cd crud-produtos/app
+```
+
+3 - Builde a aplicação com o comando:
+
+```
+ docker-compose up -d
+```
+</details>
 
 ## :memo: Autor
 
