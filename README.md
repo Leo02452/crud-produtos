@@ -86,10 +86,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 3 - Configure as variavéis de ambiente (exemplos estão app/backend/.env.example)
 
-4 - Rode a migration do banco de dados:
+4 - Execute a migração e seeder do banco de dados:
 
 ```
- npm run db:migrate
+ npm run db:start
 ```
 
 5 - Instale as dependências:
