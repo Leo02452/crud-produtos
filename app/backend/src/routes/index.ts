@@ -1,9 +1,11 @@
 import userRoutes from './UserRoutes';
 import authRoutes from './AuthRoutes';
-import productRoutes from './ProductRoutes';
+import publicProductRoutes from './PublicProductRoutes';
+import privateProductRoutes from './PrivateProductRoutes';
 
 export {
   userRoutes,
   authRoutes,
-  productRoutes,
+  publicProductRoutes,
+  privateProductRoutes,
 };
