@@ -3,8 +3,7 @@ import 'express-async-errors';
 import errorHandler from './middlewares/errorHandler';
 import {
   authRoutes,
-  publicProductRoutes,
-  privateProductRoutes,
+  productRoutes,
   userRoutes,
 } from './routes';
 import authValidation from './middlewares/authValidation';
@@ -32,9 +31,7 @@ class App {
     this.app.use(accessControl);
     this.app.use('/users', userRoutes);
     this.app.use('/auth', authRoutes);
-    this.app.use('/products', publicProductRoutes);
-    this.app.use(authValidation);
-    this.app.use('/products', privateProductRoutes);
+    this.app.use('/products', productRoutes);
     this.app.use(errorHandler);
   }
 
