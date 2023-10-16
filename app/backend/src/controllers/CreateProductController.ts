@@ -11,7 +11,7 @@ export default class CreateProductController {
 
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const dto = await this._bodyValidator.parseAsync(httpRequest.body) as ICreateProductDTO;
-    this._createProductService.execute(dto);
+    await this._createProductService.execute(dto);
     return { status: 201, body: { message: 'Produto criado com sucesso!' } };
   }
 }
