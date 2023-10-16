@@ -4,7 +4,7 @@ import DeleteProductControllerFactory from '../factories/DeleteProductController
 import ListProductsControllerFactory from '../factories/ListProductsControllerFactory';
 import UpdateProductControllerFactory from '../factories/UpdateProductControllerFactory';
 import FindProductByTermControllerFactory from '../factories/FindProductByTermControllerFactory';
-import authValidation from '../middlewares/authValidation';
+// import authValidation from '../middlewares/authValidation';
 
 const createProductController = CreateProductControllerFactory.make();
 const listProductsController = ListProductsControllerFactory.make();
@@ -23,14 +23,14 @@ route.get(
 );
 
 route.get(
-  '/search/',
+  '/search',
   async (req, res) => {
     const response = await findProductByTermController.handle(req);
     return res.status(response.status).json(response.body);
   },
 );
 
-route.use(authValidation);
+// route.use(authValidation);
 
 route.post(
   '/',

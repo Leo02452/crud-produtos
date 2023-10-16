@@ -76,7 +76,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
 
       setCookie('token', token, {
-        path: '/products',
+        path: '/',
         sameSite: 'none',
       });
     },
