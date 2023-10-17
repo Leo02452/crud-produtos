@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 
 import { useToast } from '@chakra-ui/react';
+import { IErrorResponse } from '../../application/dto-and-entities/error';
 import { IProduct } from '../../application/dto-and-entities/product';
 import { editProduct } from '../../application/services/product.service';
 
@@ -12,7 +13,7 @@ export default function useUpdateProduct({ onClose }: IUseUpdateProductProps) {
   const client = useQueryClient();
 
   const toast = useToast({
-    position: 'top-right',
+    position: 'bottom-right',
     isClosable: true,
   });
 
@@ -28,10 +29,10 @@ export default function useUpdateProduct({ onClose }: IUseUpdateProductProps) {
       client.invalidateQueries(['get-products']);
       onClose();
     },
-    onError: () => {
+    onError: (err: IErrorResponse) => {
       toast({
         title: 'Erro!',
-        description: 'Houve um erro ao tentar atualizar o produto.',
+        description: err.response.data.error,
         status: 'error',
       });
     },

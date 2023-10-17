@@ -32,7 +32,11 @@ export default function CreateProductModal({
 
   const onCreate = useCallback(
     async (dto: IProductDTO) => {
-      createProduct.mutateAsync(dto);
+      try {
+        await createProduct.mutateAsync(dto);
+      } catch (error) {
+        console.error(error);
+      }
     },
     [createProduct],
   );

@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { useToast } from '@chakra-ui/react';
 import { IProductDTO } from '../../application/dto-and-entities/product';
 import { createProduct } from '../../application/services/product.service';
+import { IErrorResponse } from '../../application/dto-and-entities/error';
 
 export interface IUseCreateProductProps {
   onClose: () => void;
@@ -12,7 +13,7 @@ export default function useCreateProduct({ onClose }: IUseCreateProductProps) {
   const client = useQueryClient();
 
   const toast = useToast({
-    position: 'top-right',
+    position: 'bottom-right',
     isClosable: true,
   });
 
@@ -28,10 +29,10 @@ export default function useCreateProduct({ onClose }: IUseCreateProductProps) {
       client.invalidateQueries(['get-products']);
       onClose();
     },
-    onError: () => {
+    onError: (err: IErrorResponse) => {
       toast({
         title: 'Erro!',
-        description: 'Houve um erro ao tentar criar o produto.',
+        description: err.response.data.error,
         status: 'error',
       });
     },

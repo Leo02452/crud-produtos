@@ -14,11 +14,15 @@ export default function Login() {
 
   const onSubmit = useCallback(
     async (data: ILoginDTO) => {
-      const result = await login.mutateAsync({
-        ...data,
-      });
-      await auth.authenticate(result.token);
-      navigate('/products');
+      try {
+        const result = await login.mutateAsync({
+          ...data,
+        });
+        await auth.authenticate(result.token);
+        navigate('/products');
+      } catch (error) {
+        console.error(error);
+      }
     },
     [auth, login, navigate],
   );

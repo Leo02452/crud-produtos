@@ -14,9 +14,13 @@ export default function Registration() {
 
   const onCreate = useCallback(
     async (dto: ICreateUserDTO) => {
-      const result = await createUser.mutateAsync(dto);
-      await auth.authenticate(result.token);
-      navigate('/products');
+      try {
+        const result = await createUser.mutateAsync(dto);
+        await auth.authenticate(result.token);
+        navigate('/products');
+      } catch (error) {
+        console.error(error);
+      }
     },
     [createUser, navigate, auth],
   );
