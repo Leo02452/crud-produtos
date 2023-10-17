@@ -87,18 +87,18 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
  cd crud-produtos/app/backend
 ```
 
-3 - Configure as variavéis de ambiente (exemplos estão app/backend/.env.example)
-
-4 - Execute a migração e seeder do banco de dados:
-
-```
- npm run db:start
-```
-
-5 - Instale as dependências:
+3 - Instale as dependências:
 
 ```
  npm install
+```
+
+4 - Configure as variavéis de ambiente (exemplos estão app/backend/.env.example)
+
+5 - Execute a migração e seeder do banco de dados:
+
+```
+ npm run db:start
 ```
 
 6 - Inicie o backend:
@@ -129,7 +129,9 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 <details>
   <summary><strong>Rodando a aplicação via Docker</strong></summary>
-Lembre-se de que pra esse caso é necessário ter o [Docker](https://www.docker.com/) instalado em sua máquina
+Lembre-se de que pra esse caso é necessário ter o [Docker](https://www.docker.com/) instalado em sua máquina.
+
+⚠️ Atenção! O docker está apresentando um bug e no momento não é possível cadastrar um novo usuário. Esse aviso sumirá assim que o problema for resolvido.
 
 1 - Clone esse repositório para sua máquina com o seguinte comando no terminal:
 
