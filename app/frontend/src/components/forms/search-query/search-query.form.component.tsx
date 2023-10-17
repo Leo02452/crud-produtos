@@ -24,7 +24,7 @@ export default function SearchQueryForm({ onUpdate }: SearchQueryFormProps) {
         <TextInput
           name="search"
           placeholder="Digite para pesquisar..."
-          width="xl"
+          flexGrow={1}
         />
       </Stack>
     </FormProvider>

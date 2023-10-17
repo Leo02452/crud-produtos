@@ -86,7 +86,7 @@ export default function Products() {
           </>
         )}
       </HStack>
-      <Stack width="90%" flexDirection="row" flexGrow={1} spacing={8} p={4}>
+      <Stack width="90%" flexDirection="row" flexGrow={1} spacing={8} p={4} flexWrap="wrap">
         {productSearchQuery.search !== '' ? (
           filteredProductsList.data?.map((product: IProduct) => (
             <ProductCard
