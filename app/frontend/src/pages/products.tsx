@@ -3,29 +3,33 @@ import {
   Button,
   Flex,
   HStack,
+  Icon,
   Spacer,
   Stack,
   useDisclosure
 } from '@chakra-ui/react';
+import { UilSignOutAlt } from '@iconscout/react-unicons';
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IProduct } from '../application/dto-and-entities/product';
 import ProductCard from '../components/cards/product.card';
+import SearchQueryForm from '../components/forms/search-query/search-query.form.component';
+import { SearchQueryFormFields } from '../components/forms/search-query/search-query.form.types';
 import CreateProductModal from '../components/modals/create-product.modal';
 import UpdateProductModal from '../components/modals/update-product.modal';
 import useAuth from '../hooks/contexts/auth.context-hook';
-import useGetAllProducts from '../hooks/queries/get-products.query-hook';
-import SearchQueryForm from '../components/forms/search-query/search-query.form.component';
 import useGetFilteredProducts from '../hooks/queries/get-filtered-products.query-hook';
-import { SearchQueryFormFields } from '../components/forms/search-query/search-query.form.types';
+import useGetAllProducts from '../hooks/queries/get-products.query-hook';
 
 export default function Products() {
   const [productSearchQuery, setProductSearchQuery] = useState<SearchQueryFormFields>(
     { search: '' },
   );
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const createProductModalControl = useDisclosure();
   const updateProductModalControl = useDisclosure();
+  const navigate = useNavigate();
 
   const { data } = useGetAllProducts();
   const filteredProductsList = useGetFilteredProducts(productSearchQuery);
@@ -39,6 +43,11 @@ export default function Products() {
     },
     [updateProductModalControl],
   );
+
+  const onLogout = () => {
+    logout();
+    navigate('/signin');
+  };
 
   return (
     <Flex
@@ -63,9 +72,18 @@ export default function Products() {
         <SearchQueryForm onUpdate={setProductSearchQuery} />
         <Spacer />
         {isAuthenticated && (
-          <Button onClick={createProductModalControl.onOpen} color="secundary">
-            Criar produto
-          </Button>
+          <>
+            <Button onClick={createProductModalControl.onOpen} color="secundary" width="sm">
+              Criar produto
+            </Button>
+            <Button
+              colorScheme="secundary"
+              onClick={onLogout}
+              rightIcon={<Icon as={UilSignOutAlt} />}
+            >
+              Sair
+            </Button>
+          </>
         )}
       </HStack>
       <Stack width="90%" flexDirection="row" flexGrow={1} spacing={8} p={4}>
