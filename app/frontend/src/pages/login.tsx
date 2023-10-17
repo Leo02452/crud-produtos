@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ILoginDTO } from '../application/dto-and-entities/auth';
 import { LoginFormID } from '../components/forms/login/login.form.constants';
@@ -22,6 +22,12 @@ export default function Login() {
     },
     [auth, login, navigate],
   );
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      navigate('/products');
+    }
+  }, [auth.isAuthenticated, navigate]);
 
   return (
     <Flex
