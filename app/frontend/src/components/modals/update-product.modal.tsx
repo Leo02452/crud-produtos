@@ -41,16 +41,24 @@ export default function UpdateProductModal({
 
   const onUpdate = useCallback(
     async (dto: IProductDTO) => {
-      updateProduct.mutateAsync({
-        id: product.id,
-        ...dto,
-      });
+      try {
+        await updateProduct.mutateAsync({
+          id: product.id,
+          ...dto,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     },
     [updateProduct, product.id],
   );
 
-  const onDelete = useCallback(() => {
-    deleteProduct.mutateAsync(product.id);
+  const onDelete = useCallback(async () => {
+    try {
+      await deleteProduct.mutateAsync(product.id);
+    } catch (error) {
+      console.error(error);
+    }
   }, [deleteProduct, product.id]);
 
   return (

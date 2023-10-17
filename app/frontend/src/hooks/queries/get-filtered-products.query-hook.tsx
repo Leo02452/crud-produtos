@@ -2,10 +2,11 @@ import { SearchQueryFormFields } from '@app/components/forms/search-query/search
 import { useToast } from '@chakra-ui/react';
 import { useQuery } from 'react-query';
 import { getFilteredProducts } from '../../application/services/product.service';
+import { IErrorResponse } from '../../application/dto-and-entities/error';
 
 export default function useGetFilteredProducts(dto: SearchQueryFormFields) {
   const toast = useToast({
-    position: 'top-right',
+    position: 'bottom-right',
     isClosable: true,
   });
 
@@ -13,10 +14,10 @@ export default function useGetFilteredProducts(dto: SearchQueryFormFields) {
     ['get-filtered-products', JSON.stringify(dto)],
     () => getFilteredProducts(dto),
     {
-      onError: () => {
+      onError: (err: IErrorResponse) => {
         toast({
           title: 'Erro!',
-          description: 'Houve um erro ao tenta buscar os produtos!',
+          description: err.response.data.error,
           status: 'error',
         });
       },
